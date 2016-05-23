@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HACHAR.net", "HACHAR.net\HACHAR.net.csproj", "{A316FF6B-A993-44EA-BF53-170B0693CD7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A316FF6B-A993-44EA-BF53-170B0693CD7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A316FF6B-A993-44EA-BF53-170B0693CD7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A316FF6B-A993-44EA-BF53-170B0693CD7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A316FF6B-A993-44EA-BF53-170B0693CD7E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
