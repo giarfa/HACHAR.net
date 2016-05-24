@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace HACHAR.net
 {
-    public class Bucket<T>
+    public abstract class Bucket
     {
-        public T Key { get; set; }
+        public object Key { get; set; }
 
         public int Value { get; set; }
 
-        public Bucket<T> Next { get; set; }
+        public Bucket Next { get; set; }
     }
 }

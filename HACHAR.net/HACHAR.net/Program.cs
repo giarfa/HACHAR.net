@@ -12,8 +12,12 @@ namespace HACHAR.net
         {
             Console.WriteLine("add".GetHashCode());
 
-            Console.WriteLine("supercalifragilisticexpialidocious".ToAsciiHACHARCode());
+            Console.WriteLine("supercalifragilisticexpialidocious".GetAsciiHACHARCode());
 
+            foreach (string item in "Lorem ipsium bla bla bla".Split(' '))
+            {
+                Console.WriteLine(item);
+            }
             Console.WriteLine(myHash("add"));
 
 
