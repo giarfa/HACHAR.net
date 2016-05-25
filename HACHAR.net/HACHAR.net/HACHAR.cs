@@ -11,8 +11,8 @@ namespace HACHAR.net
         private readonly int regionSize;
         private readonly Region head;
         private Region tail;
-        private Region ghost;
         private readonly object locker;
+
 
         public HACHAR(int regionSize, object locker)
         {
@@ -20,6 +20,22 @@ namespace HACHAR.net
             this.locker = locker;
             this.head = new Region(this.regionSize, this.locker);
             this.tail = new Region(this.regionSize, this.locker);
+            this.head.Next = this.tail;
+        }
+
+        public int NumberRegion
+        {
+            get
+            {
+                Region current = head;
+                int i = 1;
+                while (current.Next != null)
+                {
+                    i++;
+                    current = current.Next;
+                }
+                return i;
+            }
         }
 
         private int getBucketIndex(int key)
@@ -49,21 +65,51 @@ namespace HACHAR.net
 
             // The slot in the head is already full so we must chain
             Bucket current = this.head.GetBucket(index);
-            while (current.Next != null)
+            // Look for the key in the chain
+            if (b.Key == current.Key)
             {
-                // Look for the key in the chain
-                if (b.Key == current.Key)
+                lock (this.locker)
                 {
-                    lock (this.locker)
-                    {
-                        // Once  we found the key we increment the value of the counter
-                        current.Value++;
-                    }
-                    return;
+                    // Once  we found the key we increment the value of the counter
+                    current.Value++;
                 }
-                current = current.Next;
+                return;
             }
-            
+            while (true)
+            {
+                while (current.Next != null)
+                {
+                    // Look for the key in the chain
+                    if (b.Key == current.Key)
+                    {
+                        lock (this.locker)
+                        {
+                            // Once  we found the key we increment the value of the counter
+                            current.Value++;
+                        }
+                        return;
+                    }
+                    current = current.Next;
+                }
+                lock (this.locker)
+                {
+                    if (current.Next == null)
+                    {
+                        if (this.tail.Insert(b))
+                        {
+                            //Insertion is true as we have enough space in the tail region
+                            current.Next = b;
+                            return;
+                        }
+                        //In case the insertion is false because no space in the tail region
+                        Region newTail = new Region(this.regionSize, this.locker);
+                        this.tail.Next = newTail;
+                        this.tail = newTail;
+                        this.tail.Insert(b);
+                        current.Next = b;
+                    }
+                }
+            }
         }
     }
 }

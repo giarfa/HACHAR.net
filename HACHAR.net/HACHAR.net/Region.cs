@@ -21,7 +21,9 @@ namespace HACHAR.net
             this.locker = locker;
         }
 
-        public bool isHalfFull { get { return this.nextFreeSlot == this.regionSize / 2; } }
+        public Region Next { get; set; }
+
+            // public bool isHalfFull { get { return this.nextFreeSlot == this.regionSize / 2; } }
 
         public bool Insert(Bucket bucket)
         {

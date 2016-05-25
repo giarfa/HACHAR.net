@@ -14,7 +14,7 @@ namespace HACHAR.net
             this.Value = 1;
         }
 
-        public new string Key { get; set; }
+        public string Key { get; set; }
 
         public new StringBucket Next { get; set; }
     }

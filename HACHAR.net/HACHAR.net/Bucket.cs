@@ -8,7 +8,7 @@ namespace HACHAR.net
 {
     public abstract class Bucket
     {
-        public object Key { get; set; }
+        public virtual object Key { get; set; }
 
         public int Value { get; set; }
 
