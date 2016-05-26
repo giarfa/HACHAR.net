@@ -28,7 +28,7 @@ namespace HACHAR.net
         public bool Insert(Bucket bucket)
         {
             // If the region is full we must block the insertion in this region
-            if (this.nextFreeSlot == (this.regionSize - 1))
+            if (this.nextFreeSlot == this.regionSize)
                 return false;
 
             this.regionBuckets[this.nextFreeSlot] = bucket;

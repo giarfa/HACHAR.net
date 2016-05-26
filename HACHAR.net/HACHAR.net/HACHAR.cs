@@ -27,7 +27,7 @@ namespace HACHAR.net
         {
             get
             {
-                Region current = head;
+                Region current = this.head;
                 int i = 1;
                 while (current.Next != null)
                 {
@@ -65,40 +65,42 @@ namespace HACHAR.net
 
             // The slot in the head is already full so we must chain
             Bucket current = this.head.GetBucket(index);
+            Bucket last = current;
             // Look for the key in the chain
-            if (b.Key == current.Key)
-            {
-                lock (this.locker)
-                {
-                    // Once  we found the key we increment the value of the counter
-                    current.Value++;
-                }
-                return;
-            }
+            //if (b.Key.Equals(current.Key))
+            //{
+            //    lock (this.locker)
+            //    {
+            //        // Once  we found the key we increment the value of the counter
+            //        current.Value++;
+            //    }
+            //    return;
+            //}
             while (true)
             {
-                while (current.Next != null)
+                while (current != null)
                 {
                     // Look for the key in the chain
-                    if (b.Key == current.Key)
+                    if (b.Key.Equals(current.Key))
                     {
                         lock (this.locker)
                         {
                             // Once  we found the key we increment the value of the counter
                             current.Value++;
+                            return;
                         }
-                        return;
                     }
+                    last = current;
                     current = current.Next;
                 }
                 lock (this.locker)
                 {
-                    if (current.Next == null)
+                    if (current == null)
                     {
                         if (this.tail.Insert(b))
                         {
                             //Insertion is true as we have enough space in the tail region
-                            current.Next = b;
+                            last.Next = b;
                             return;
                         }
                         //In case the insertion is false because no space in the tail region
@@ -106,9 +108,11 @@ namespace HACHAR.net
                         this.tail.Next = newTail;
                         this.tail = newTail;
                         this.tail.Insert(b);
-                        current.Next = b;
+                        last.Next = b;
+                        return;
                     }
                 }
+                current = current.Next;
             }
         }
     }

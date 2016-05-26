@@ -8,14 +8,14 @@ namespace HACHAR.net
 {
     public class IntegerBucket : Bucket
     {
+        private int key;
+
         public IntegerBucket(int key)
         {
             this.Key = key;
             this.Value = 1;
         }
 
-        public new int Key { get; set; }
-
-        public new IntegerBucket Next { get; set; }
+        public override object Key { get { return this.key; } set { this.key = (int)value; } }
     }
 }
