@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IntegerBucket.cs" />
+    <Compile Include="LinearProbing.cs" />
     <Compile Include="StringBucket.cs" />
     <Compile Include="Bucket.cs" />
     <Compile Include="Extensions.cs" />

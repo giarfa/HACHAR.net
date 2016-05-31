@@ -45,7 +45,7 @@ namespace HACHAR.net
 
         public void Insert(string key)
         {
-            int index = this.getBucketIndex(key.GetAsciiHACHARCode());
+            int index = this.getBucketIndex(key.GetAsciiCode());
             StringBucket b = new StringBucket(key);
             this.Insert(b, index);
         }

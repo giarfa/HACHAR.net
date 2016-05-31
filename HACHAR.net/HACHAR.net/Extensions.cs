@@ -8,7 +8,7 @@ namespace HACHAR.net
 {
     public static class Extensions
     {
-        public static int GetAsciiHACHARCode(this String s)
+        public static int GetAsciiCode(this String s)
         {
             int hash = 0;
             for (int i = 0; i < s.Length; i++)
