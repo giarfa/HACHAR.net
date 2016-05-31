@@ -16,23 +16,23 @@ namespace HACHAR.net
         {
             int[] numbers = new int[] { 4, 10, 8, 6, 9, 2, 6, 12, 16, 21, 34, 9, 6, 2, 6 };
             Object locker = new Object();
-
+            string filePath = @"C:\Users\Mehdi Kaabi\Desktop\1.txt";
             Console.WriteLine("Test_HACHAR_Strings_Partion");
-            Test_HACHAR_Strings_Partion(locker);
+            Test_HACHAR_Strings_Partion(locker, filePath);
 
             Console.WriteLine("Test_HACHAR_Strings");
-            Test_HACHAR_Strings(locker);
+            Test_HACHAR_Strings(locker, filePath);
 
             Console.WriteLine("Test_LinearProbing_Strings");
-            Test_LinearProbing_Strings(locker);
+            Test_LinearProbing_Strings(locker, filePath);
 
             Console.WriteLine("DONE");
             Console.ReadLine();
         }
 
-        private static void Test_HACHAR_Strings(object locker)
+        private static void Test_HACHAR_Strings(object locker, string filePath)
         {
-            string filePath = @"C:\Users\Francesco\Downloads\1.txt";
+           
             //string filePath = @"C:\Users\Francesco\Downloads\Charlie_and_the_Chocolate_Factory-Dahl_Roald.txt";
             string[] AllLines = File.ReadAllLines(filePath);
 
@@ -66,9 +66,9 @@ namespace HACHAR.net
             }
         }
 
-        private static void Test_HACHAR_Strings_Partion(object locker)
+        private static void Test_HACHAR_Strings_Partion(object locker, string filePath)
         {
-            string filePath = @"C:\Users\Francesco\Downloads\1.txt";
+            
             //string filePath = @"C:\Users\Francesco\Downloads\Charlie_and_the_Chocolate_Factory-Dahl_Roald.txt";
             string[] AllLines = File.ReadAllLines(filePath);
 
@@ -96,9 +96,9 @@ namespace HACHAR.net
             Console.WriteLine(watch.ElapsedMilliseconds);
         }
 
-        private static void Test_LinearProbing_Strings(object locker)
+        private static void Test_LinearProbing_Strings(object locker, string filePath)
         {
-            string filePath = @"C:\Users\Francesco\Downloads\1.txt";
+            
             //string filePath = @"C:\Users\Francesco\Downloads\Charlie_and_the_Chocolate_Factory-Dahl_Roald.txt";
             string[] AllLines = File.ReadAllLines(filePath);
 
