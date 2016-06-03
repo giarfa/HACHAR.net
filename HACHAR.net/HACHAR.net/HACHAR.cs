@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HACHAR.net
 {
@@ -21,21 +17,6 @@ namespace HACHAR.net
             this.head = new Region(this.regionSize, this.locker);
             this.tail = new Region(this.regionSize, this.locker);
             this.head.Next = this.tail;
-        }
-
-        public int NumberRegion
-        {
-            get
-            {
-                Region current = this.head;
-                int i = 1;
-                while (current.Next != null)
-                {
-                    i++;
-                    current = current.Next;
-                }
-                return i;
-            }
         }
 
         private int getBucketIndex(int key)
@@ -66,16 +47,7 @@ namespace HACHAR.net
             // The slot in the head is already full so we must chain
             Bucket current = this.head.GetBucket(index);
             Bucket last = current;
-            // Look for the key in the chain
-            //if (b.Key.Equals(current.Key))
-            //{
-            //    lock (this.locker)
-            //    {
-            //        // Once  we found the key we increment the value of the counter
-            //        current.Value++;
-            //    }
-            //    return;
-            //}
+
             while (true)
             {
                 while (current != null)

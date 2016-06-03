@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HACHAR.net
 {
@@ -10,7 +6,7 @@ namespace HACHAR.net
     {
         private readonly int size;
         private readonly object locker;
-        public Bucket[] buckets;
+        private Bucket[] buckets;
 
         public LinearProbing(int size, object locker)
         {

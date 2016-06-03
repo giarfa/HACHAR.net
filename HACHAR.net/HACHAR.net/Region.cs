@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HACHAR.net
 {
@@ -22,8 +18,6 @@ namespace HACHAR.net
         }
 
         public Region Next { get; set; }
-
-            // public bool isHalfFull { get { return this.nextFreeSlot == this.regionSize / 2; } }
 
         public bool Insert(Bucket bucket)
         {

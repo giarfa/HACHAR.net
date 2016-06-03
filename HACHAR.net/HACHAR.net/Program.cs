@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace HACHAR.net
@@ -20,8 +16,7 @@ namespace HACHAR.net
 
             #region Tests with Strings
 
-            string filePath = @"C:\Users\Francesco\Downloads\1.txt";
-            //string filePath = @"C:\Users\Francesco\Downloads\Charlie_and_the_Chocolate_Factory-Dahl_Roald.txt";
+            string filePath = @"path\to\a\test\file.txt";
             string[] AllLines = File.ReadAllLines(filePath);
 
             //Console.WriteLine("Test_HACHAR_Strings_Partion");
